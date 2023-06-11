@@ -1,18 +1,23 @@
 import Home from "./views/home";
+import MyPage from "./views/myPage";
+import Settings from "./views/settings";
 
 const routes = [
-  {path: "/", view: new Home()}
+  {path: "/", view: new Home()},
+  {path: "/myPage", view: new MyPage()},
+  {path: "/settings", view: new Settings()}
 ]
 const router = async () => {
 
-  let current_view = routes[0];
+  let currentView = routes[0];
 
   for(const route of routes){
     if(location.pathname === route.path){
-      current_view = route
+      currentView = route.view;
     }
   }
-  document.querySelector('#app').appendChild = await current_view.getHomeDiv
+  console.log(currentView);
+  document.querySelector('#app').innerHTML = await currentView.page.innerHTML;
 }
 
 window.addEventListener("popstate", () => {
