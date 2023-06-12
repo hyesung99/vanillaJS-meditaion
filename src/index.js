@@ -1,6 +1,7 @@
-import Home from "./views/home";
-import MyPage from "./views/myPage";
-import Settings from "./views/settings";
+import Home from "./views/home.js";
+import MyPage from "./views/myPage.js";
+import Settings from "./views/settings.js";
+import './css/index.css';
 
 const routes = [
   {path: "/", view: new Home()},
@@ -16,7 +17,6 @@ const router = async () => {
       currentView = route.view;
     }
   }
-  console.log(currentView);
   document.querySelector('#app').innerHTML = await currentView.page.innerHTML;
 }
 
@@ -25,7 +25,9 @@ window.addEventListener("popstate", () => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
+  router();
   const links = document.querySelectorAll('a');
+  console.log(links);
   for(const link of links){
     link.addEventListener('click', e => {
       e.preventDefault();

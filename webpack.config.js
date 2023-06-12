@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output:{
-    filename: 'main.js',
+    filename: 'bundle.js',
     // __dirname : file명을 제외한 현재 절대 경로
     // resolve는 인자의 오른쪽 부터 탐색하여 절대 경로 ('/') 만나면 출력
     // local에서 c:\Users\4538a\OneDrive\바탕 화면\zum\dist가 됨
