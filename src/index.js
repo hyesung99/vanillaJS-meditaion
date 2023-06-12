@@ -9,7 +9,7 @@ const routes = [
 ]
 const router = async () => {
 
-  let currentView = routes[0];
+  let currentView;
 
   for(const route of routes){
     if(location.pathname === route.path){
@@ -25,9 +25,12 @@ window.addEventListener("popstate", () => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.body.addEventListener('click', e => {
-    e.preventDefault();
-    history.pushState(null, null, e.target.href);
-    router();
-  })
+  const links = document.querySelectorAll('a');
+  for(const link of links){
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      history.pushState(null, null, e.target.href);
+      router();
+    })
+  }
 })
